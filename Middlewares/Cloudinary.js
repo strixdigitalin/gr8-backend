@@ -11,8 +11,20 @@ cloudinary.config({
 
 const uploadOnCloudinary = async (file) => {
   console.log("before clound", file);
-  const data = await cloudinary.uploader.upload(file.path);
+  const data = await cloudinary.uploader.upload(file.filen);
   return data.secure_url;
+};
+const uniqueFilename = new Date().toISOString();
+const uploadPDF = async (file) => {
+  console.log(file, "<<<this is file pdf");
+  cloudinary.uploader.multi(
+    file.path,
+    { public_id: `resume/${uniqueFilename}`, tags: `blog` },
+    function (error, result) {
+      console.log(result, error);
+    }
+  );
 };
 
 module.exports = uploadOnCloudinary;
+module.exports = uploadPDF;
