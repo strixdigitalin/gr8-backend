@@ -22,6 +22,7 @@ const create = async (req, res, next) => {
 const read = async (req, res, next) => {
   try {
     const data = await JobSchema.find(req.query);
+    console.log(`${data}`, "<<<t his is data");
     SendSuccess(res, "Category Fetched", data);
   } catch (e) {
     console.log(e);
