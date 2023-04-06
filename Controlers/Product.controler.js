@@ -15,13 +15,13 @@ const create = async (req, res, next) => {
     // console.log(fileurl, "<<<this is file url");
     if (!validator.validateField(fields, res)) return null;
     // return null;
-
+    console.log(fileurl, "<<this is url");
     const savedData = await ProductCategorySchema.create({
       ...req.body,
       image: fileurl,
     });
 
-    SendSuccess(res, "Category Created", savedData);
+    SendSuccess(res, "Product Created", savedData);
   } catch (e) {
     console.log(e);
     SendError(res, e);
