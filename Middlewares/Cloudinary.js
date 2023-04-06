@@ -1,6 +1,7 @@
 const cloudinary = require("cloudinary").v2;
 
 // Configuration
+
 cloudinary.config({
   cloud_name: "djkvwhl4w",
   api_key: "188614786747447",
@@ -11,7 +12,8 @@ cloudinary.config({
 
 const uploadOnCloudinary = async (file) => {
   console.log("before clound", file);
-  const data = await cloudinary.uploader.upload(file.filen);
+  const data = await cloudinary.uploader.upload(file.path);
+  console.log(data, "<<this is image data");
   return data.secure_url;
 };
 const uniqueFilename = new Date().toISOString();
@@ -26,5 +28,5 @@ const uploadPDF = async (file) => {
   );
 };
 
-module.exports = uploadOnCloudinary;
-module.exports = uploadPDF;
+module.exports = { uploadOnCloudinary, uploadPDF };
+// module.exports = uploadPDF;

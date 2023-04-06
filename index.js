@@ -10,6 +10,7 @@ const ProductRoutes = require("./Routes/Product.routes");
 const LeadRoute = require("./Routes/Leads.route");
 const JobRoutes = require("./Routes/Job.routes");
 const CandidateRoutes = require("./Routes/Candidates.routes");
+const Enquiry = require("./Routes/Enquiry.Routes.js");
 
 // ----------------------------------------------------------------------------------------------
 
@@ -44,6 +45,7 @@ app.use("/product", ProductRoutes);
 app.use("/lead", LeadRoute);
 app.use("/job", JobRoutes);
 app.use("/candidate", CandidateRoutes);
+app.use("/enquiry", Enquiry);
 
 // ------------------------------------------------------
 
