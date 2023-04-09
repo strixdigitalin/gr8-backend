@@ -11,14 +11,18 @@ const create = async (req, res, next) => {
     if (!req.files.image) {
       return SendFail(res, "Image is required");
     }
-    const fileurl = await uploadOnCloudinary(req.files.image[0]);
-    // console.log(fileurl, "<<<this is file url");
+    let images = req.files.image;
+    let fileUrls = [];
+    for (let index = 0; index < images.length; index++) {
+      const fileurl = await uploadOnCloudinary(images[index]);
+      fileUrls.push(fileurl);
+    }
     if (!validator.validateField(fields, res)) return null;
+    console.log(fileUrls, "<<< thisisfileurl");
     // return null;
-    console.log(fileurl, "<<this is url");
     const savedData = await ProductCategorySchema.create({
       ...req.body,
-      image: fileurl,
+      images: fileUrls,
     });
 
     SendSuccess(res, "Product Created", savedData);

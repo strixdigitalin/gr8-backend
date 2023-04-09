@@ -7,6 +7,7 @@ const userdata = new mongoose.Schema(
       required: [true, "Name (categoryName) is required"],
     },
     image: { type: String },
+    images: [{ type: String }],
     description: String,
   },
   { timestamps: true }
